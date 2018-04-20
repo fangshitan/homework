@@ -1,86 +1,28 @@
-#include <cstdio>
-#include <iostream>
-#include <string>
-#include <cstring>
-using namespace std;
-int main()
-{
-    int mode[3]={0};
-    int i,j=0,aim,l,w,line;
-    char in[100],source[1000];
-    string input;
-    char path[100];
-    int sfind(string a);
-    int w_c(char a[]);
-    int l_c(char a[]);
+一、wc.0 a.项目简介及用法： 空项目，无用法
 
-    gets(in);
-    input=in;
-    l=input.length();
-    cout<<l<<endl;
-    if(input.find("-c")<100) mode[0]++;
-    if(input.find("-w")<100) mode[1]++;
-    if(input.find("-l")<100) mode[2]++;
-    aim=sfind(input);
-    //cout<<"aim"<<aim<<endl;
-    j=0;
-    for(i=aim+1;i<l;i++)
-    {
-        path[j]=input[i];
-        //cout<<path[i]<<endl;
-        //printf("%c",path[j]);
-        j++;
-    }
+b.文件列表： 仅有一个文件wc_0.py
 
-    freopen(path,"r",stdin);
-    gets(source);
-    l=strlen(source);
-    if(mode[0]) printf("共有%d个字符\n",l);
-    if(mode[1])
-    {
-        w=w_c(source);
-        printf("共有%d个单词\n",w);
-    }
-    if(mode[2])
-    {
-        line=l_c(source);
-        printf("共有%d个句子\n",line);
-    }
-    //cout<<path<<endl;
-    /*
-    cin>>source;
-    */
-}
-int sfind(string a)
-{
-    int i,l;
-    l=a.length();
-    for (i=l-1;i>=0;i--)
-    {
-        if(a[i]==' ') return i;
-    }
-}
-int w_c(char a[])
-{
-    int i,l,c=0;
-    l=strlen(a);
-    for (i=0;i<l;i++)
-    {
-        if(isalpha(a[i])&&a[i+1]==' ') c++;
-    }
-    return c;
-}
-int l_c(char a[])
-{
-    int i,j,l,c=0;
-    char aim[4]={'?','.','!'};
-    l=strlen(a);
-    for (i=0;i<l;i++)
-    {
-        for(j=0;j<4;j++)
-        {
-            if(a[i]==aim[j]) c++;
-        }
-    }
-    return c;
-}
+c.例程运行及结果 无
+
+二、wc_1.0 a.项目简介及用法： 简介：本程序为命令行程序，可在窗口中多次输入，输入“exit”可退出 用法：输入格式为“-X path”(-X为命令符,path为文件路径) X可以为c,l,w,意为统计文件的字符数，行数，单词数
+
+b.文件列表 wc_1.0
+
+c.例程运行及结果
+
+三、wc_2.0 a.项目简介及用法： 相对上个版本添加了-s,-a命令 -s:统计的目标为当前文件路径下全部文本文件，可与其他命令符一起使用 -a:统计文件中空行，注释行，代码行的数量
+
+b.文件列表： 仅有一个文件wc_2.0.py
+
+c.例程运行及结果
+
+四、wc_3.0 a.项目简介及用法： 相对上个版本添加了可视化界面，而且在遇到错误时会显示错误信息 目前界面上有三个按钮，分别为“查询”，“清空”，“打开文件或所在目录”，预计以后版本会加入将窗口内容保存为本地文件的功能
+
+b.文件列表： 仅有一个文件wc_3.0.py
+
+c.例程运行及结果 见附带图片
+
+五、测试数据生成器
+
+可生成约50Mb的txt文件，用于性能测试，结果可在pycharm中查看
+
